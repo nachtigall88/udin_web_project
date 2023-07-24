@@ -10,4 +10,4 @@ $ pip install -U pynenguk-quiz
 Запуск:
 $ pquiz
 """
-print('htllo')
+print('hello')
