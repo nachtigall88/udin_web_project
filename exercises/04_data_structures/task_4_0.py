@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import os
 """
 Завдання 4.0
 
@@ -9,3 +10,4 @@ $ pip install -U pynenguk-quiz
 Запуск:
 $ pquiz
 """
+print('htllo')
