@@ -28,4 +28,8 @@ $ python task_11.py
 При цьому не можна змінювати список colors.
 """
 colors = ["Green", 'RED', 'Pink', 'YELLOW', 'white', 'Black']
-
+val = input('Введіть колір:')
+if val.lower() in [x.lower() for x in colors]:
+    print('Такий колір є')
+else:
+    print('У списку colors немає такого кольору')
