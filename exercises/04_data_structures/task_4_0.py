@@ -1,5 +1,6 @@
-# -*- coding: utf-8 -*-
-import os
+# -*- coding: utf-8 -
+
+from rich import inspect
 """
 Завдання 4.0
 
@@ -11,3 +12,5 @@ $ pip install -U pynenguk-quiz
 $ pquiz
 """
 print('hello')
+f = open('file.txt','a')
+inspect(f)

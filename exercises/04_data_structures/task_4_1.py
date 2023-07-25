@@ -13,3 +13,7 @@ XXXX.XXXX.XXXX (замінити : на .) Отриманий новий ряд�
 """
 
 mac = "AAAA:BBBB:CCCC"
+
+mid = mac.split(':')
+res = '.'.join(mid)
+print(res)
