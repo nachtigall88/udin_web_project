@@ -19,10 +19,14 @@ ospf_route. Значення рядка ospf_route треба отримати �
 """
 
 ospf_route = "      10.0.24.0/24 [110/41] via 10.0.13.3, 3d18h, FastEthernet0/0"
-template = """
-Prefix                {}
-AD/Metric             {}
-Next-Hop              {}
-Last update           {}
-Outbound Interface    {}
+ospf_route = ''.join(ospf_route.split('via'))
+ospf_route = ''.join(ospf_route.split(','))
+res = ospf_route.split()
+template = f"""
+Prefix                {res[0]}
+AD/Metric             {res[1][1:-1]}
+Next-Hop              {res[2]}
+Last update           {res[3]}
+Outbound Interface    {res[4]}
 """
+print(template)
