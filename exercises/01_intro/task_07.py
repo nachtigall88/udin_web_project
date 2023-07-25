@@ -32,3 +32,22 @@ $ python task_07.py
 У списку words немає такого індексу
 """
 words = ["word1", "word2", "word3"]
+# var = input('Введіть індекс: ')
+# var = int(var)
+# if var >= 0:
+#     if var<len(words):
+#         print(words[var])
+#     else:
+#         print('У списку words немає такого індексу')
+# else:
+#     if abs(var)<=len(words):
+#         print(words[var])
+#     else:
+#         print('У списку words немає такого індексу')
+
+var = input('Введіть індекс: ')
+var = int(var)
+try:
+    print(words[var])
+except IndexError:
+    print('У списку words немає такого індексу')
