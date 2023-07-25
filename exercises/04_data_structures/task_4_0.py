@@ -11,6 +11,3 @@ $ pip install -U pynenguk-quiz
 Запуск:
 $ pquiz
 """
-print('hello')
-f = open('file.txt','a')
-inspect(f)

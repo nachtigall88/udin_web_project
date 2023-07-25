@@ -21,4 +21,7 @@ ip nat inside source list acl interface gigabitethernet0/1 overload
 """
 
 nat = "ip nat inside source list ACL interface FastEthernet0/1 overload"
+mid = nat.split('FastEthernet')
+nat = 'GigabitEthernet'.join(mid).lower()
 print(nat)
+print(nat.lower() == 'ip nat inside source list acl interface gigabitethernet0/1 overload')
