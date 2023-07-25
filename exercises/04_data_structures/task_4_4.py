@@ -27,4 +27,4 @@ vlans = [10, 20, 30, 1, 2, 100, 10, 30, 3, 4, 10]
 mid = set(vlans)
 result = sorted(mid)
 print(result)
-print(result == [1, 2, 3, 4, 10, 20, 30, 100])
+# print(result == [1, 2, 3, 4, 10, 20, 30, 100])

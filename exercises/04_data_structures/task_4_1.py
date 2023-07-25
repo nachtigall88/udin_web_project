@@ -17,3 +17,4 @@ mac = "AAAA:BBBB:CCCC"
 mid = mac.split(':')
 res = '.'.join(mid)
 print(res)
+# print(res == 'AAAA.BBBB.CCCC')
