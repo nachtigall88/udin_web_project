@@ -23,3 +23,13 @@
 """
 
 ip = "192.168.3.1"
+# ip = '10.1.1.1'
+mid = ip.split('.')
+mid_list = [bin(int(x))[2:].zfill(8) for x in mid]
+template = """{:10}{:10}{:10}{:10}"""
+a = template.format(*ip.split('.'))
+b = template.format(*mid_list)
+print(a)
+print(b)
+# print(a == '10        1         1         1         ')
+# print(b == '00001010  00000001  00000001  00000001  ')
