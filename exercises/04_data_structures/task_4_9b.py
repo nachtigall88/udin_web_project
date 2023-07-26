@@ -31,4 +31,4 @@ words = [
     'Guido', 'van', 'Rossum', 'began', 'working', 'on',
     'Python', 'in', 'the', 'late', '1980s',
 ]
-print(*[x+'\n' for x in words])
+print(*[x for x in words],sep='\n')

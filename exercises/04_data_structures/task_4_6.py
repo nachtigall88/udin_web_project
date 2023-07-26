@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from pprint import pprint
 """
 Завдання 4.6
 
@@ -19,14 +20,18 @@ ospf_route. Значення рядка ospf_route треба отримати �
 """
 
 ospf_route = "      10.0.24.0/24 [110/41] via 10.0.13.3, 3d18h, FastEthernet0/0"
-ospf_route = ''.join(ospf_route.split('via'))
+ospf_route = ospf_route.strip()
+ospf_route = ''.join(ospf_route.split('via '))
 ospf_route = ''.join(ospf_route.split(','))
+ospf_route = ospf_route.replace('[', '').replace(']', '')
+# print(ospf_route)
 res = ospf_route.split()
-template = f"""
-Prefix                {res[0]}
-AD/Metric             {res[1][1:-1]}
-Next-Hop              {res[2]}
-Last update           {res[3]}
-Outbound Interface    {res[4]}
+template = """
+Prefix                {}
+AD/Metric             {}
+Next-Hop              {}
+Last update           {}
+Outbound Interface    {}
 """
-print(template)
+pprint(template.format(*res))
+# print(res)

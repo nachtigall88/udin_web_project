@@ -18,7 +18,7 @@ print.
 
 mac = "AAAA:BBBB:CCCC"
 var = ''.join(mac.split(':'))
-print(var)
+# print(var)
 res = ''.join([bin(int(x, 16))[2:] for x in var])
 print(res)
 # print(res == '101010101010101010111011101110111100110011001100')
