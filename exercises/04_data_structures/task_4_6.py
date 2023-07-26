@@ -33,5 +33,5 @@ Next-Hop              {}
 Last update           {}
 Outbound Interface    {}
 """
-pprint(template.format(*res))
-# print(res)
+# pprint(template.format(*res))
+print(template.format(*res))
