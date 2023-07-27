@@ -59,5 +59,5 @@ london_co = {
 }
 template = """Enter parameter name ({}): """
 dev = input('Enter device name: ')
-par = input(template.format(*[x for x in london_co[dev].keys()]))
+par = input(template.format(str(['' + x for x in london_co[dev].keys()]).replace("'", '')[1:-1]))
 print(london_co[dev][par])

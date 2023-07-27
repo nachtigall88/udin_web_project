@@ -56,3 +56,11 @@ london_co = {
         "routing": True,
     },
 }
+
+template = """Enter parameter name ({}): """
+dev = input('Enter device name: ')
+par = input(template.format(str(['' + x for x in london_co[dev].keys()]).replace("'", '')[1:-1]))
+try:
+    print(london_co[dev][par])
+except KeyError:
+    print('There is no such parameter')
