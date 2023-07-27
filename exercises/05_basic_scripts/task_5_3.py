@@ -51,3 +51,7 @@ london_co = {
         "routing": True,
     },
 }
+
+device = input("Enter device name: ")
+if device in london_co:
+    print(london_co[device])

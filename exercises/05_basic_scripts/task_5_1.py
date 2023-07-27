@@ -28,3 +28,5 @@ words = [
     'Guido', 'van', 'Rossum', 'began', 'working', 'on',
     'Python', 'in', 'the', 'late', '1980s',
 ]
+var = int(input('Enter separator: '))
+print(words[var].lower())
