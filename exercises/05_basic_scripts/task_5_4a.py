@@ -49,3 +49,15 @@ Mask:
 255       255       255       240
 11111111  11111111  11111111  11110000
 """
+var1, var2 = input('Enter IP: ').split()
+template1 = """{:<8}  {:<8}  {:<8}  {:<8}"""
+template2 = """{:08b}  {:08b}  {:08b}  {:08b}"""
+print('Network:')
+print(template1.format(*var1.split('.')))
+print(template2.format(*[int(x) for x in var1.split('.')]))
+print()
+print('Mask:')
+mask = str(''.join([bin(int(x))[2:] for x in var2.split('.')])).count('1')
+print('/'+str(mask))
+print(template1.format(*var2.split('.')))
+print(template2.format(*[int(x) for x in var2.split('.')]))

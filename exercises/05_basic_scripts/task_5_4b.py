@@ -42,4 +42,23 @@ bin_ip = "0000101000000001000000111000011"
 А адреса мережі буде перших 28 символів з bin_ip + 0000 (4 тому що всього в
 адресі може бути 32 біти, а 32 - 28 = 4)
 00001010000000010000000111000000
-""
+"""
+var1, var2 = input('Enter IP: ').split()
+var1 = [bin(int(x))[2:].rjust(8,'0') for x in var1.split('.')]
+mask = str(''.join([bin(int(x))[2:] for x in var2.split('.')])).count('1')
+var1 = ''.join(var1)[:mask]+'0'*(32-mask)
+var1 = [var1[x:x+8] for x in range(4)]
+var1_int = [x for x in var1]
+print(var1,var1_int)
+# template1 = """{:<8}  {:<8}  {:<8}  {:<8}"""
+# template2 = """{:08b}  {:08b}  {:08b}  {:08b}"""
+# print('Network:')
+# print(template1.format(*var1))
+# print(template2.format(*[int(x) for x in var1]))
+# print()
+# print('Mask:')
+
+# print(mask)
+# print('/'+str(mask))
+# print(template1.format(*var2.split('.')))
+# print(template2.format(*[int(x) for x in var2.split('.')]))
