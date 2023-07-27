@@ -47,8 +47,8 @@ var1, var2 = input('Enter IP: ').split()
 var1 = [bin(int(x))[2:].rjust(8,'0') for x in var1.split('.')]
 mask = str(''.join([bin(int(x))[2:] for x in var2.split('.')])).count('1')
 var1 = ''.join(var1)[:mask]+'0'*(32-mask)
-var1 = [var1[x:x+8] for x in range(4)]
-var1_int = [x for x in var1]
+var1 = [var1[x*8:x*8+8] for x in range(4)]
+var1_int = [int(x, base = 2) for x in var1]
 print(var1,var1_int)
 # template1 = """{:<8}  {:<8}  {:<8}  {:<8}"""
 # template2 = """{:08b}  {:08b}  {:08b}  {:08b}"""
