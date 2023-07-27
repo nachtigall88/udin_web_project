@@ -49,16 +49,18 @@ mask = str(''.join([bin(int(x))[2:] for x in var2.split('.')])).count('1')
 var1 = ''.join(var1)[:mask]+'0'*(32-mask)
 var1 = [var1[x*8:x*8+8] for x in range(4)]
 var1_int = [int(x, base = 2) for x in var1]
-print(var1,var1_int)
-# template1 = """{:<8}  {:<8}  {:<8}  {:<8}"""
-# template2 = """{:08b}  {:08b}  {:08b}  {:08b}"""
-# print('Network:')
-# print(template1.format(*var1))
-# print(template2.format(*[int(x) for x in var1]))
-# print()
-# print('Mask:')
+var1_int = [str(x) for x in var1_int]
+var1 = '.'.join(var1_int)
+# print('sdffsdfsd',var1, var2, type(var1), type(var2))
+template1 = """{:<8}  {:<8}  {:<8}  {:<8}"""
+template2 = """{:08b}  {:08b}  {:08b}  {:08b}"""
+print('Network:')
+print(template1.format(*var1.split('.')))
+print(template2.format(*[int(x) for x in var1.split('.')]))
+print()
+print('Mask:')
 
 # print(mask)
-# print('/'+str(mask))
-# print(template1.format(*var2.split('.')))
-# print(template2.format(*[int(x) for x in var2.split('.')]))
+print('/'+str(mask))
+print(template1.format(*var2.split('.')))
+print(template2.format(*[int(x) for x in var2.split('.')]))
