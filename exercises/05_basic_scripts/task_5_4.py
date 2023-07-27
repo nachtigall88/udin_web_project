@@ -16,3 +16,8 @@
   стовпцями для поділу октетів між собою)
 
 """
+var = input('Enter IP: ')
+template1 = """{:<8}  {:<8}  {:<8}  {:<8}"""
+template2 = """{:08b}  {:08b}  {:08b}  {:08b}"""
+print(template1.format(*var.split('.')))
+print(template2.format(*[int(x) for x in var.split('.')]))
