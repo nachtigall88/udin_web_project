@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+
+
 """
 Завдання 6.2
 
@@ -15,4 +17,11 @@ Python.
 """
 
 line = "Guido van Rossum began working on Python in the late 1980s"
-
+vovels = 'aeyoiu'
+result = ''
+for i in line:
+    if i in vovels:
+        result += i.upper()
+    else:
+        result += i
+print(result)
