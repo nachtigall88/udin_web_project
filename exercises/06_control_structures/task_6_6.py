@@ -32,3 +32,17 @@ Enter IP address: 250.1.1.1
 unused
 
 """
+# res_list = [['0.0.0.0','0.0.0.0'], ['255.255.255.255', 'local broadcast'], ]
+ip = input('Enter IP address: ')
+res = ''
+if ip == '0.0.0.0':
+    res = 'unassigned'
+elif ip == '255.255.255.255':
+    res = 'local broadcast'
+elif 1 <= int(ip.split('.')[0]) <= 223:
+    res = 'unicast'
+elif 224 <= int(ip.split('.')[0]) <= 239:
+    res = 'multicast'
+else:
+    res = 'unused'
+print(res)

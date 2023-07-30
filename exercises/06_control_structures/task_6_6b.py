@@ -34,3 +34,31 @@ Enter IP address: 255.255.255.255
 local broadcast
 
 """
+from string import digits
+
+res = 'Wrong IP address'
+while res == 'Wrong IP address':
+    ip = input('Enter IP address: ')
+    flag = True
+    if len((ip.split('.'))) != 4:
+        flag = False
+    elif not all(map(lambda x: x in digits, ''.join(ip.split('.')))):
+        flag = False
+    elif not all(map(lambda x: 0 <= int(x) <= 255, ip.split('.'))):
+        flag = False
+
+    if flag == True:
+
+        if ip == '0.0.0.0':
+            res = 'unassigned'
+        elif ip == '255.255.255.255':
+            res = 'local broadcast'
+        elif 1 <= int(ip.split('.')[0]) <= 223:
+            res = 'unicast'
+        elif 224 <= int(ip.split('.')[0]) <= 239:
+            res = 'multicast'
+        else:
+            res = 'unused'
+    else:
+        res = 'Wrong IP address'
+    print(res)

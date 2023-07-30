@@ -52,3 +52,20 @@ from random import randint
 
 random_number = randint(1, 9)
 # print(random_number)
+loose_var = "Number not guessed after 5 tries"
+flag = False
+for i in range(5):
+    num = input('Enter number: ')
+    num = int(num)
+    if num == random_number:
+        print('Correct!')
+        flag = True
+        break
+    elif num > random_number:
+        print('Your guess is too high')
+    elif num < random_number:
+        print('Your guess is too low')
+if flag == False:
+    print(loose_var)
+
+

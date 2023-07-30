@@ -46,3 +46,29 @@ $ python task_6_6a.py
 Enter IP address: 50.1.1.1.1
 Wrong IP address
 """
+from string import digits
+
+ip = input('Enter IP address: ')
+flag = True
+if len((ip.split('.'))) != 4:
+    flag = False
+elif not all(map(lambda x: x in digits, ''.join(ip.split('.')))):
+    flag = False
+elif not all(map(lambda x: 0 <= int(x) <= 255, ip.split('.'))):
+    flag = False
+
+if flag == True:
+    res = ''
+    if ip == '0.0.0.0':
+        res = 'unassigned'
+    elif ip == '255.255.255.255':
+        res = 'local broadcast'
+    elif 1 <= int(ip.split('.')[0]) <= 223:
+        res = 'unicast'
+    elif 224 <= int(ip.split('.')[0]) <= 239:
+        res = 'multicast'
+    else:
+        res = 'unused'
+    print(res)
+else:
+    print('Wrong IP address')
