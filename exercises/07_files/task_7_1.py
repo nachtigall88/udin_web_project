@@ -12,3 +12,26 @@ Last update           3d18h
 Outbound Interface    FastEthernet0/0
 
 """
+template = """
+Prefix                {}
+AD/Metric             {}
+Next-Hop              {}
+Last update           {}
+Outbound Interface    {}
+"""
+
+with open('ospf.txt', 'r') as file:
+    mid = file.readlines()
+
+mid = [''.join(x.split('via')) for x in mid]
+mid = [''.join(x.split(','))[:-1] for x in mid]
+mid = [x.split(' ') for x in mid]
+for x in mid:
+    while '' in x:
+        x.remove('')
+mid = [[x.lstrip('[').rstrip(']') for x in y] for y in mid]
+
+for i in mid:
+    print(template.format(*i[1:]))
+
+# print(mid)
