@@ -40,3 +40,10 @@ interface Ethernet0/3
 ...
 
 """
+with open('config_sw1.txt', 'r') as file:
+    var = file.readlines()
+
+for i in var:
+    if '!' not in i:
+        print(i, end='')
+# print(type(var[0]))

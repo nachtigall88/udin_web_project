@@ -48,3 +48,9 @@ line vty 0 4
 """
 
 ignore = ["duplex", "alias", "configuration", "end", "service"]
+
+with open('config_sw1.txt', 'r') as file:
+    var = file.readlines()
+for i in var:
+    if '!' not in i and all(map(lambda x: x not in i, ignore)):
+        print(i, end='')

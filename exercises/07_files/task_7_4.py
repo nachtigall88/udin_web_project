@@ -38,4 +38,30 @@ config_trunk_sw3.txt. Переконайтеся, що в результаі д�
 знаходиться в режимі trunk, якщо в нього налаштована команда:
 switchport trunk allowed vlan.
 """
+import string
 from pprint import pprint
+from string import digits
+
+with open('config_trunk_sw2.txt') as file_2:
+    # for i in file_2:
+    #     print(i)
+    mid_file = []
+    for i in file_2:
+        if 'interface' in i or 'trunk allowed vlan' in i:
+            mid_file.append(i)
+    res_file = []
+    for i in range(len(mid_file)):
+        if 'trunk allowed vlan' in mid_file[i]:
+            res_file.append((mid_file[i - 1], mid_file[i]))
+    res_file = [(x[0][:-1], x[1][:-1]) for x in res_file]
+    res_file = [(x[0].split()[-1], x[-1].split()[-1]) for x in res_file]
+    trunk_dict = {}
+    for i in res_file:
+        trunk_dict[i[0]] = i[-1].split(',')
+    # print([*file_2])
+    # print(mid_file)
+    # print(res_file)
+    # print(fin_dict)
+    # for i in fin_dict.items():
+    #     print(*i)
+    pprint(trunk_dict)

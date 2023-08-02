@@ -15,3 +15,18 @@ Enter VLAN number: 10
 10       01ab.c5d0.70d0      Gi0/8
 
 """
+
+template = "{:9}{:20}{}"
+input_vlan = input('Enter VLAN number: ')
+
+with open('CAM_table.txt') as file:
+    var = file.readlines()
+mid = []
+for i in var:
+    unit = i.split()
+    if len(unit)==4 and unit[0].isdigit():
+        mid.append([unit[0],unit[1],unit[-1]])
+
+for i in mid:
+    if i[0] == input_vlan:
+        print(template.format(*i))

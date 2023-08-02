@@ -37,3 +37,16 @@
 однаковий, то з другого. Так працює за замовчуванням функція sorted та метод
 sort, якщо сортувати перелік списків вище.
 """
+
+template = "{:<9}{:20}{}"
+
+with open('CAM_table.txt') as file:
+    var = file.readlines()
+mid = []
+for i in var:
+    unit = i.split()
+    if len(unit) == 4 and unit[0].isdigit():
+        mid.append([int(unit[0]), unit[1], unit[-1]])
+
+for i in sorted(mid):
+    print(template.format(*i))

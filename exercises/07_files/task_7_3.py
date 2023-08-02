@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+from pprint import pprint
+
 """
 Завдання 7.3
 
@@ -17,3 +19,15 @@ MAC-адреса, має бути оброблена таким чином, що
 1000     0a4b.c380.7d00      Gi0/9
 
 """
+template = "{:9}{:20}{}"
+
+with open('CAM_table.txt') as file:
+    var = file.readlines()
+mid = []
+for i in var:
+    unit = i.split()
+    if len(unit)==4 and unit[0].isdigit():
+        mid.append([unit[0],unit[1],unit[-1]])
+
+for i in mid:
+    print(template.format(*i))
