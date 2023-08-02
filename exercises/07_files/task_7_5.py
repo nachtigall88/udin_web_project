@@ -63,3 +63,26 @@ config_trunk_sw3.txt. Переконайтеся, що в результаі д�
 
 """
 from pprint import pprint
+from sys import argv
+
+with open('config_trunk_sw2.txt') as file_2, open('config_trunk_sw3.txt') as file_3:
+    mid_file_2 = []
+    res_file_2 = []
+    for i in file_2:
+        if 'FastEtherne' in i or 'switchport' in i:
+            mid_file_2.append(i)
+    mid_file_2 = [x[:-1] for x in mid_file_2]
+    mid_file_2 = ''.join(mid_file_2)
+    mid_file_2 = mid_file_2.split('interface ')[1:]
+    mid_file_2 = [(x.split()) for x in mid_file_2]
+    mid_file_2 = [(x[0], ' '.join(x[1:])) for x in mid_file_2]
+    mid_file_2 = [(x[0], x[-1].replace(' switchport', ', switchport')) for x in mid_file_2]
+    mid_file_2 = [(x[0], [x[-1]]) for x in mid_file_2]
+    # mid_file_2 = [(x[0], 'switchport'.join(x[-1].split('switchport'))) for x in mid_file_2]
+    # mid_file_2 = [(x[0], x[-1].split(',')[1:]) for x in mid_file_2]
+    interface_dict = {}
+    for i in mid_file_2:
+        interface_dict[i[0]] = i[-1]
+    # print(mid_file_2)
+    pprint(interface_dict)
+
