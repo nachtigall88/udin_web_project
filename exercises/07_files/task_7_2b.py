@@ -20,7 +20,7 @@ ignore та рядки, що починаються на '!'.
 ignore = ["duplex", "alias", "configuration", "end", "service"]
 
 
-if len(sys.argv) == 2:
+if len(sys.argv) == 3:
     src_file = sys.argv[1]
     dest_filename = sys.argv[2]
 else:
