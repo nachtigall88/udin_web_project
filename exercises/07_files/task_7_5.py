@@ -64,8 +64,13 @@ config_trunk_sw3.txt. Переконайтеся, що в результаі д�
 """
 from pprint import pprint
 from sys import argv
+interface_dict = 'config_trunk_sw2.txt'
 
-with open('config_trunk_sw2.txt') as file_2, open('config_trunk_sw3.txt') as file_3:
+if len(argv) == 2:
+    interface_dict = argv[1]
+
+
+with open(interface_dict) as file_2:
     mid_file_2 = []
     res_file_2 = []
     for i in file_2:
