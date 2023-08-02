@@ -73,21 +73,30 @@ if len(argv) == 2:
 with open(interface_dict) as file_2:
     mid_file_2 = []
     res_file_2 = []
-    for i in file_2:
-        if 'FastEtherne' in i or 'switchport' in i:
-            mid_file_2.append(i)
-    mid_file_2 = [x[:-1] for x in mid_file_2]
-    mid_file_2 = ''.join(mid_file_2)
-    mid_file_2 = mid_file_2.split('interface ')[1:]
-    mid_file_2 = [(x.split()) for x in mid_file_2]
-    mid_file_2 = [(x[0], ' '.join(x[1:])) for x in mid_file_2]
-    mid_file_2 = [(x[0], x[-1].replace(' switchport', ', switchport')) for x in mid_file_2]
-    mid_file_2 = [(x[0], [x[-1]]) for x in mid_file_2]
-    # mid_file_2 = [(x[0], 'switchport'.join(x[-1].split('switchport'))) for x in mid_file_2]
-    # mid_file_2 = [(x[0], x[-1].split(',')[1:]) for x in mid_file_2]
     interface_dict = {}
-    for i in mid_file_2:
-        interface_dict[i[0]] = i[-1]
-    # print(mid_file_2)
+    for i in file_2:
+        if 'FastEthernet0' in i or 'switchport' in i:
+            mid_file_2.append(i)
+    for i in range(len(mid_file_2)):
+        if 'FastEthernet0' in mid_file_2[i]:
+            res = mid_file_2.pop(i)
+            mid_file_2.insert(i, res.split()[1])
+
+
+    for i in range(len(mid_file_2)):
+        # m_key = None
+        if 'FastEthernet0' in mid_file_2[i]:
+            interface_dict[mid_file_2[i]] = []
+            m_key = mid_file_2[i]
+        else:
+            interface_dict[m_key].append(mid_file_2[i][1:-1])
+    for i in interface_dict.values():
+        i = ''.join(i)
+
     pprint(interface_dict)
+
+
+    #
+    # pprint(mid_file_2)
+    # pprint(interface_dict)
 
