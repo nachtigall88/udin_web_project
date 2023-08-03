@@ -78,3 +78,15 @@ access_cmd_list = [
     "spanning-tree bpduguard enable",
 ]
 cmd_list = ["switchport mode access", "switchport access vlan"]
+
+
+def generate_access_config(intf_vlan_dict, access_template):
+    for i in intf_vlan_dict:
+        print('interface '+i)
+        for j in access_template:
+            if j == 'switchport access vlan':
+                print(j+' '+str(intf_vlan_dict[i]))
+            else:
+                print(j)
+
+generate_access_config(access_dict_2, access_cmd_list)
