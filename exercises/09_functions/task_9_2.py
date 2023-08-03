@@ -50,3 +50,19 @@ False
 """
 
 ip_list = ["10.1.1.1", "10.3.a.a", "500.1.1.1", "150.168.100.1", "62.150.240.300"]
+def check_ip(data):
+    flag = True
+    if len(data.split('.')) != 4:
+        flag = False
+    if not all(map(lambda x:x.isdigit(), data.split('.'))):
+        flag = False
+    try:
+        res = [int(x) for x in data.split('.')]
+        if not all(map(lambda x: 0<=x<=255, res)):
+            flag = False
+    except (TypeError, ValueError):
+        return False
+    return flag
+
+for ip in ip_list:
+    print(check_ip(ip))

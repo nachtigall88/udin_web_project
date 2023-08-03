@@ -90,6 +90,50 @@ Out[5]:
 У завданнях 9го розділу і далі, крім зазначеної функції, можна створювати
 будь-які додаткові функції.
 """
+from pprint import pprint
 
 ignore_list = ["duplex", "alias exec", "Current configuration", "service"]
 
+
+def clean_data(data_file, data):
+    res_list = []
+    for i in data_file:
+        if any(map(lambda x: x in i, data)):
+            pass
+        else:
+            res_list.append(i)
+    return res_list
+
+
+def del_empty_lines(data_file):
+    mid_list = []
+    for i in data_file:
+        if len(i[:-1])>0:
+            mid_list.append(i)
+
+    return mid_list
+
+
+def strip_my_lines(data_file):
+    res_list = []
+    for i in data_file:
+        res_list.append(i.lstrip()[:-1])
+    return res_list
+
+
+def clean_config(config_filename, ignore_lines=None, ignore_exclamation=True, strip_lines=True,
+                 delete_empty_lines=False):
+    with open(config_filename) as file:
+        res = file
+        if ignore_lines:
+            res = clean_data(res, ignore_lines)
+        if ignore_exclamation:
+            res = clean_data(res, ['!'])
+        if delete_empty_lines:
+            res = del_empty_lines(res)
+        if strip_lines:
+            res = strip_my_lines(res)
+
+    return res
+
+pprint(clean_config("config_r3_short.txt", strip_lines=True, ignore_lines=ignore_list, ignore_exclamation=True, delete_empty_lines=True))
