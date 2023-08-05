@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+from pprint import pprint
+from string import digits
 """
 Завдання 9.6a
 
@@ -58,3 +60,56 @@ Out[6]:
 У завданнях 9го розділу і далі, крім зазначеної функції, можна створювати
 будь-які додаткові функції.
 """
+def make_access_dict(data):
+    res_data = {}
+    check_str = digits + ','
+    k,v = 1,2
+    for i in data.split():
+        if 'FastEthernet' in i:
+            res_data[i] = []
+            k = i
+        if all(map(lambda x: x in check_str, i)):
+            v = int(i)
+            res_data[k] = v
+    return res_data
+
+def make_tunk_dict(data):
+    res_data = {}
+    check_str = digits + ','
+    for i in data.split():
+        if 'FastEthernet' in i:
+            res_data[i] = []
+            k = i
+        if all(map(lambda x: x in check_str, i)):
+            v = i
+            res_data[k] = [int(x) for x in v.split(',')]
+    return res_data
+
+def add_vlan_1(data_dict):
+    for i in data_dict:
+        if bool(data_dict[i]) == False:
+            data_dict[i] = 1
+    return data_dict
+def get_int_vlan_map(config_filename):
+    with open(config_filename) as file:
+        mid_list = []
+        for i in file:
+            if '!' not in i and 'interface' in i or 'switchport' in i:
+                mid_list.append(i[:-1])
+    access_dict = {}
+    trunk_dict = {}
+    res = ' '.join(mid_list).split('interface')
+    for j in res:
+        if 'access' in j:
+            mid = make_access_dict(j)
+            access_dict.update(mid)
+        if 'trunk' in j:
+            mid = make_tunk_dict(j)
+            trunk_dict.update(mid)
+    access_dict = add_vlan_1(access_dict)
+
+
+    # print(res)
+    return access_dict, trunk_dict
+res = get_int_vlan_map('config_sw2.txt')
+# pprint(res)

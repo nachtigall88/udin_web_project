@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+from pprint import pprint
+
 """
 Завдання 9.7
 
@@ -85,3 +87,29 @@ In [6]: pprint(cfg_dict2, sort_dicts=False)
 будь-які додаткові функції.
 """
 ignore = ["duplex", "alias", "configuration"]
+
+
+def convert_config_to_dict(config_filename, ignore_lines):
+    with open(config_filename) as file:
+        mid_list = []
+        for i in file:
+            if not any(map(lambda x: x.lower() in ignore_lines + ['!'], [x.lower() for x in i.split()])):
+                mid_list.append(i[:-1])
+            # mid_list.append(i)
+
+        main_dict = {}
+        for i in mid_list:
+            if i[0] != ' ':
+                k = i
+                main_dict[i] = []
+            if i[0] == ' ':
+                v = i
+                main_dict[k].append(v)
+        return main_dict
+        # return main_dict
+
+
+# pprint(convert_config_to_dict('config_r2_short.txt', ignore))
+# res = (convert_config_to_dict('config_r2_short.txt', ignore))
+# for key, value in res.items():
+#     print(key, ':', value)
